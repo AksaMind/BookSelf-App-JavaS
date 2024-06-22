@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Management App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Book Management App</h1>
+
+        <form id="inputForm" class="form">
+            <div class="form-group">
+                <label for="inputTitle">Title:</label>
+                <input type="text" id="inputTitle" placeholder="Enter title" required>
+            </div>
+            <div class="form-group">
+                <label for="inputAuthor">Author:</label>
+                <input type="text" id="inputAuthor" placeholder="Enter author" required>
+            </div>
+            <div class="form-group">
+                <label for="inputYear">Year:</label>
+                <input type="number" id="inputYear" placeholder="Enter year" required>
+            </div>
+            <div class="form-group">
+                <label for="inputStatus">Status:</label>
+                <select id="inputStatus" required>
+                    <option value="belum">Belum Selesai Dibaca</option>
+                    <option value="selesai">Selesai Dibaca</option>
+                </select>
+            </div>
+            <button type="submit" class="btn-submit">Add Book</button>
+        </form>
+
+        <div class="filter">
+            <label for="inputPencarian">Search:</label>
+            <input type="text" id="inputPencarian" placeholder="Search by title or author">
+        </div>
+
+        <div class="buttons">
+            <button id="btnTampilSemua">Show All Books</button>
+            <button id="btnUrutkan">Sort by Title</button>
+        </div>
+
+        <div class="lists">
+            <h2>Books to Read</h2>
+            <ul id="listBelumSelesai" class="book-list"></ul>
+            
+            <h2>Completed Books</h2>
+            <ul id="listSelesai" class="book-list"></ul>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
