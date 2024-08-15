@@ -1,4 +1,3 @@
-// Function to generate unique ID
 function generateID() {
     if (!localStorage.getItem("books")){
         return 1
@@ -6,7 +5,6 @@ function generateID() {
     return (JSON.parse(localStorage.getItem("books")).length)+ 1
 }
 
-// Function to create book element
 function createBookElement(book) {
     const { id, title, author, year, isComplete } = book;
 
@@ -35,7 +33,6 @@ function createBookElement(book) {
     return bookItem;
 }
 
-// Function to add book to respective list
 function addBook(book) {
     const newBook = createBookElement(book);
 
@@ -46,21 +43,17 @@ function addBook(book) {
     }
 }
 
-// Function to save books array to localStorage
 function saveDataToStorage() {
     localStorage.setItem('books', JSON.stringify(books));
 }
 
-// Function to fetch books array from localStorage
 function fetchDataFromStorage() {
     const storedBooks = JSON.parse(localStorage.getItem('books'));
     return storedBooks === null ? [] : storedBooks;
 }
 
-// Initialize books array from localStorage or empty array
 let books = fetchDataFromStorage();
 
-// Function to render all books
 function renderBooks() {
     listBelumSelesai.innerHTML = '';
     listSelesai.innerHTML = '';
@@ -70,7 +63,6 @@ function renderBooks() {
     });
 }
 
-// Event listener for form submission
 inputForm.addEventListener('submit', function (e) {
     e.preventDefault();
 
@@ -95,7 +87,6 @@ inputForm.addEventListener('submit', function (e) {
     inputTitle.focus();
 });
 
-// Event delegation for toggle and delete buttons
 document.addEventListener('click', function (e) {
     if (e.target.classList.contains('btn-toggle')) {
         const bookId = e.target.parentElement.parentElement.getAttribute('data-id');
@@ -115,7 +106,6 @@ document.addEventListener('click', function (e) {
     }
 });
 
-// Event listener for search input
 inputPencarian.addEventListener('input', function () {
     const keyword = inputPencarian.value.trim().toLowerCase();
     const filteredBooks = books.filter(book =>
@@ -124,16 +114,13 @@ inputPencarian.addEventListener('input', function () {
     renderBooks(filteredBooks);
 });
 
-// Event listener for "Show All Books" button
 btnTampilSemua.addEventListener('click', function () {
     renderBooks();
 });
 
-// Event listener for "Sort by Title" button
 btnUrutkan.addEventListener('click', function () {
     books.sort((a, b) => a.title.localeCompare(b.title));
     renderBooks();
 });
 
-// Initial rendering of books on page load
 renderBooks();
